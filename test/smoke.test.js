@@ -1,6 +1,4 @@
-import greeting from "./greeting.test.js"
-import base32 from "./base32.test.js"
-import random from "./random.test.js"
+import counter from "./counter.test.js"
 
 export const options = {
   thresholds: {
@@ -9,7 +7,5 @@ export const options = {
 }
 
 export default function () {
-  greeting()
-  base32()
-  random()
+  counter()
 }

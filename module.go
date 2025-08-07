@@ -16,10 +16,12 @@ type module struct {
 func (m *module) Exports() modules.Exports {
 	return modules.Exports{
 		Named: map[string]any{
-			"greeting":  m.greeting,
-			"b32encode": m.b32encode,
-			"b32decode": m.b32decode,
-			"Random":    m.random,
+			"increment": m.Increment,
+			"decrement": m.Decrement,
+			"get":       m.Get,
+			"set":       m.Set,
+			"add":       m.Add,
+			"reset":     m.Reset,
 		},
 	}
 }

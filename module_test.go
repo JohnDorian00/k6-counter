@@ -1,5 +1,6 @@
 package example
 
+// TODO рефактор
 import (
 	_ "embed"
 	"testing"
