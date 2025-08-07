@@ -2,7 +2,7 @@
   "typedocOptions": {
     "entryPoints": ["./index.d.ts"],
     "out": "build/docs",
-    "name": "xk6-example",
+    "name": "k6-counter",
     "readme": "none",
     "hideGenerator": true,
     "disableSources": true,
@@ -14,7 +14,7 @@
     "categorizeByGroup": false,
     "visibilityFilters": {},
     "navigationLinks": {
-      "GitHub": "https://github.com/grafana/xk6-example"
+      "GitHub": "https://github.com/JohnDorian00/k6-counter"
     }
   },
   "compilerOptions": {
