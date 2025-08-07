@@ -1,5 +1,4 @@
-// Package example contains the xk6-example extension.
-package example
+package k6_counter
 
 import "go.k6.io/k6/js/modules"
 

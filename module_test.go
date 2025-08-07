@@ -1,4 +1,4 @@
-package example
+package k6_counter
 
 // TODO рефактор
 import (
