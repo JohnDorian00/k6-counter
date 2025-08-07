@@ -1,4 +1,4 @@
-module k6-counter
+module github.com/JohnDorian00/k6-counter
 
 go 1.24.5
 
