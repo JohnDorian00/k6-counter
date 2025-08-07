@@ -1,31 +1,24 @@
 package counter
 
 import (
-	"sync"
+	"sync/atomic"
 )
 
-type Counter struct {
-	value int
-	mu    sync.Mutex
+var GlobalCounter int64
+
+func Increment() int64 {
+	return atomic.AddInt64(&GlobalCounter, 1)
 }
 
-var globalCounter = &Counter{}
-
-func Increment() int {
-	globalCounter.mu.Lock()
-	defer globalCounter.mu.Unlock()
-	globalCounter.value++
-	return globalCounter.value
+func Decrement() int64 {
+	return atomic.AddInt64(&GlobalCounter, -1)
 }
 
-func Get() int {
-	globalCounter.mu.Lock()
-	defer globalCounter.mu.Unlock()
-	return globalCounter.value
+func Get() int64 {
+	return atomic.LoadInt64(&GlobalCounter)
 }
 
-func Reset() {
-	globalCounter.mu.Lock()
-	defer globalCounter.mu.Unlock()
-	globalCounter.value = 0
+func Reset() int64 {
+	atomic.StoreInt64(&GlobalCounter, 0)
+	return 0
 }

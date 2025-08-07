@@ -7,16 +7,25 @@ import (
 
 type CounterModule struct{}
 
-func (m *CounterModule) Increment() int {
-	return counter.Increment()
-}
+func (m *CounterModule) NewModuleInstance(vu modules.VU) interface{} {
+	wrap := func(fn func() int64) func() int {
+		callbackWrapper := vu.RegisterCallback()
+		return func() int {
+			var result int64
+			callbackWrapper(func() error {
+				result = fn()
+				return nil
+			})
+			return int(result)
+		}
+	}
 
-func (m *CounterModule) Get() int {
-	return counter.Get()
-}
-
-func (m *CounterModule) Reset() {
-	counter.Reset()
+	return map[string]interface{}{
+		"increment": wrap(counter.Increment),
+		"decrement": wrap(counter.Decrement),
+		"get":       wrap(counter.Get),
+		"reset":     wrap(counter.Reset),
+	}
 }
 
 func init() {
